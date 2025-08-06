@@ -64,7 +64,10 @@ class _ChatbotPageState extends State<ChatbotPage> {
           ),
           centerTitle: true,
           actions: [
-            // Tombol clear chat
+            IconButton(
+              onPressed: () => Navigator.pushNamed(context, '/scanPage'),
+              icon: Icon(Icons.document_scanner),
+            ),
             IconButton(
               icon: const Icon(Icons.delete_rounded, color: Colors.red),
               onPressed: () {

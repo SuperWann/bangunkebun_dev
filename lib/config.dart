@@ -2,7 +2,8 @@ import 'package:bangunkebun_dev/widgets/roundedNavbar.dart';
 import 'package:flutter/material.dart';
 
 class ApiConfig {
-  static const String baseUrl = 'http://192.168.1.95:7203/bangunKebun';
+  static const String baseUrl =
+      'https://e892232dbd00.ngrok-free.app/bangunKebun';
 }
 
 class NavBarConfig {

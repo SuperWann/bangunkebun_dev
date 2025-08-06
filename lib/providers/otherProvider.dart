@@ -7,7 +7,7 @@ class OtherProvider extends ChangeNotifier {
   List<dynamic>? _dataJenisKonten;
   List<dynamic>? get dataJenisKonten => _dataJenisKonten;
 
-  Future<void> getJenisPaket() async {
+  Future<void> getJenisKonten() async {
     _dataJenisKonten = await _otherService.getDataJenisKonten();
     notifyListeners();
   }
