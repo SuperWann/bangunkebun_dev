@@ -70,7 +70,7 @@ class StarterPageSatu extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.w600,
-                          fontSize: 40.sp,
+                          fontSize: 30.sp,
                         ),
                       ),
                       SizedBox(height: 15.h),
