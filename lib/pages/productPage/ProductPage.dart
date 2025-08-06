@@ -6,8 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 
-// class ProductPage extends StatelessWidget {
-//   const ProductPage({Key? key}) : super(key: key);
+class ProductPage extends StatelessWidget {
+  const ProductPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +18,15 @@ import 'package:provider/provider.dart';
   }
 }
 
-// class ProductView extends StatelessWidget {
-//   const ProductView({Key? key}) : super(key: key);
+class ProductView extends StatelessWidget {
+  const ProductView({Key? key}) : super(key: key);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-//       statusBarIconBrightness: Brightness.dark,
-//       systemStatusBarContrastEnforced: false,
-//     ));
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.dark,
+      systemStatusBarContrastEnforced: false,
+    ));
 
     final provider = Provider.of<ProductProvider>(context);
     return WillPopScope(
@@ -336,81 +336,81 @@ import 'package:provider/provider.dart';
     );
   }
 
-//   Widget _buildSortOption({
-//     required BuildContext context,
-//     required IconData icon,
-//     required String title,
-//     required String subtitle,
-//     required VoidCallback onTap,
-//     Matrix4? iconTransform,
-//   }) {
-//     return Material(
-//       color: Colors.transparent,
-//       child: InkWell(
-//         onTap: onTap,
-//         borderRadius: BorderRadius.circular(8),
-//         child: Container(
-//           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-//           child: Row(
-//             children: [
-//               Container(
-//                 width: 40,
-//                 height: 40,
-//                 decoration: BoxDecoration(
-//                   color: const Color(0xFF4CAF50).withOpacity(0.1),
-//                   borderRadius: BorderRadius.circular(8),
-//                 ),
-//                 child: Transform(
-//                   alignment: Alignment.center,
-//                   transform: iconTransform ?? Matrix4.identity(),
-//                   child: Icon(
-//                     icon,
-//                     color: const Color(0xFF4CAF50),
-//                     size: 20,
-//                   ),
-//                 ),
-//               ),
-//               const SizedBox(width: 16),
-//               Expanded(
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     Text(
-//                       title,
-//                       style: const TextStyle(
-//                         fontSize: 14,
-//                         fontWeight: FontWeight.w500,
-//                         color: Color(0xFF212121),
-//                       ),
-//                     ),
-//                     const SizedBox(height: 2),
-//                     Text(
-//                       subtitle,
-//                       style: const TextStyle(
-//                         fontSize: 12,
-//                         color: Color(0xFF757575),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//               const Icon(
-//                 Icons.chevron_right,
-//                 color: Color(0xFF9E9E9E),
-//                 size: 20,
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  Widget _buildSortOption({
+    required BuildContext context,
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required VoidCallback onTap,
+    Matrix4? iconTransform,
+  }) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Row(
+            children: [
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF4CAF50).withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Transform(
+                  alignment: Alignment.center,
+                  transform: iconTransform ?? Matrix4.identity(),
+                  child: Icon(
+                    icon,
+                    color: const Color(0xFF4CAF50),
+                    size: 20,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF212121),
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Color(0xFF757575),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Icon(
+                Icons.chevron_right,
+                color: Color(0xFF9E9E9E),
+                size: 20,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 
-// class ProductCard extends StatelessWidget {
-//   final Product product;
+class ProductCard extends StatelessWidget {
+  final Product product;
 
-//   const ProductCard({Key? key, required this.product}) : super(key: key);
+  const ProductCard({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
