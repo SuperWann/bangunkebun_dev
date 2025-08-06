@@ -2,7 +2,7 @@ import 'package:bangunkebun_dev/config.dart';
 import 'package:bangunkebun_dev/pages/communityPage/listCommunityPage.dart';
 import 'package:bangunkebun_dev/pages/contentPage/listContentPage.dart';
 import 'package:bangunkebun_dev/pages/ecommercePage.dart/ecommercePage.dart';
-import 'package:bangunkebun_dev/pages/homePage/homePage%20copy.dart';
+import 'package:bangunkebun_dev/pages/homePage/homePage.dart';
 import 'package:bangunkebun_dev/pages/profilePage/profilePage.dart';
 import 'package:bangunkebun_dev/widgets/roundedNavbar.dart';
 import 'package:flutter/material.dart';
@@ -103,6 +103,7 @@ class _NavbarState extends State<Navbar> {
           }
         },
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           extendBody: true,
           body: Stack(
             children: [

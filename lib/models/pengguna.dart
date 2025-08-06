@@ -6,6 +6,7 @@ class Pengguna {
   final String? email;
   final String? password;
   final int? idKecamatan;
+  final String? fotoProfil;
 
   Pengguna({
     this.iduser,
@@ -15,6 +16,7 @@ class Pengguna {
     this.noTelepon,
     this.namaLengkap,
     this.idKecamatan,
+    this.fotoProfil,
   });
 
   factory Pengguna.fromJson(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class Pengguna {
       noTelepon: json['no_telepon'],
       namaLengkap: json['nama_lengkap'],
       idKecamatan: json['id_kecamatan'],
+      fotoProfil: json['foto_profile'],
     );
   }
 
