@@ -102,7 +102,8 @@ class _NavbarState extends State<Navbar> {
             }
           }
         },
-        child: Scaffold(
+        child: Scaffold( 
+          resizeToAvoidBottomInset: false,
           extendBody: true,
           body: Stack(
             children: [

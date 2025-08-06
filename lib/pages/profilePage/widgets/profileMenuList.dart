@@ -1,4 +1,5 @@
 import 'package:bangunkebun_dev/pages/profilePage/widgets/profileMenuItem.dart';
+import 'package:bangunkebun_dev/pages/storePages/storePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -42,10 +43,10 @@ class ProfileMenuList extends StatelessWidget {
           iconColor: const Color(0xFF2E7D32),
           onTap: () {
             print('Navigating to StorePage');
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => const StorePage()),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const StorePage()),
+            );
           },
         ),
         SizedBox(height: 8.h),

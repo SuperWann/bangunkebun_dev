@@ -14,7 +14,7 @@ class ProfilePage extends StatelessWidget {
       const SystemUiOverlayStyle(
         statusBarColor: const Color(
           0xFFFAFAFA,
-        ), // Sama dengan header EcommercePage
+        ), 
         statusBarIconBrightness: Brightness.dark, // Ikon gelap untuk Android
         statusBarBrightness: Brightness.light, // Ikon gelap untuk iOS
         systemStatusBarContrastEnforced: false,
