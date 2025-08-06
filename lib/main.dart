@@ -4,6 +4,7 @@ import 'package:bangunkebun_dev/authPage/registrasiPageDua.dart';
 import 'package:bangunkebun_dev/authPage/registrasiPageSatu.dart';
 import 'package:bangunkebun_dev/authPage/registrasiPageTiga.dart';
 import 'package:bangunkebun_dev/pages/chatbotPage/chatbotPage.dart';
+import 'package:bangunkebun_dev/pages/communityPage/addCommunityPage.dart';
 import 'package:bangunkebun_dev/pages/contentPage/addContentPage.dart';
 import 'package:bangunkebun_dev/pages/contentPage/detailContentPage.dart';
 import 'package:bangunkebun_dev/pages/ecommercePage.dart/ecommercePage.dart';
@@ -83,6 +84,9 @@ class MyApp extends StatelessWidget {
 
             //Scan
             ScanPage.routeName: (context) => ScanPage(),
+
+            //Community
+            AddCommunityPage.routeName: (context) => AddCommunityPage(),
           },
         );
       },

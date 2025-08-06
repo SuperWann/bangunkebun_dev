@@ -1,3 +1,5 @@
+import 'package:bangunkebun_dev/models/KontenPengguna.dart';
+import 'package:bangunkebun_dev/providers/contentProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,13 +14,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String? username;
 
+  List<KontenPengguna> dataArticles = [];
+  List<KontenPengguna> dataVideos = [];
+
+  ContentProvider _contentProvider = ContentProvider();
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
+
       setState(() {
         username = prefs.getString('username');
+        dataArticles = _contentProvider.dataArticles!;
+        dataVideos = _contentProvider.dataVideos!;
       });
     });
   }
@@ -94,29 +104,44 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               height: double.infinity,
               color: Colors.white,
-              child: Column(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    clipBehavior: Clip.hardEdge,
-                    width: double.infinity,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    child: Stack(
-                      children: [
-                        Image(
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  await _contentProvider.getDataArticles();
+                  setState(() {
+                    dataArticles = _contentProvider.dataArticles ?? [];
+                  });
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(
                           image: const AssetImage(
                             'assets/images/homepage-img.png',
                           ),
                           fit: BoxFit.cover,
-                          width: double.infinity,
-                          height: double.infinity,
                         ),
-                      ],
+                      ),
+                      clipBehavior: Clip.hardEdge,
+                      width: double.infinity,
+                      height: MediaQuery.of(context).size.height * 0.2,
                     ),
-                  ),
-                ],
+                    SizedBox(height: 20.h),
+                    Text('Penuhi Kebutuhanmu'),
+                    SizedBox(height: 10.h),
+
+                    //Penuhi Kebutuhanmu
+                    SizedBox(height: 20.h),
+                    Text('Belajar Cara Bangun Kebunmu'),
+                    SizedBox(height: 10.h),
+                    //Container here
+                    SizedBox(height: 20.h),
+                    Text('Diskusi Bersama'),
+                    SizedBox(height: 10.h),
+                  ],
+                ),
               ),
             ),
             Positioned(

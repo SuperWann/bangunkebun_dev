@@ -96,149 +96,139 @@ class _ListContentPageState extends State<ListContentPage> {
                 children: [
                   Container(
                     padding: const EdgeInsets.only(bottom: 100, top: 10),
-                    child: RefreshIndicator(
-                      onRefresh: () async {
-                        await _contentProvider.getDataArticles();
-                        setState(() {
-                          dataArticles = _contentProvider.dataArticles ?? [];
-                        });
-                      },
-                      child: ListView.builder(
-                        padding: EdgeInsets.symmetric(vertical: 10.h),
-                        itemCount: dataArticles.length,
-                        itemBuilder: (context, index) {
-                          final article = dataArticles[index];
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                context,
-                                '/detailContentPage',
-                                arguments: article,
-                              );
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(bottom: 10),
-                              height: MediaQuery.of(context).size.height * 0.25,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.15),
-                                    blurRadius: 2,
-                                    spreadRadius: 1,
-                                    offset: const Offset(0, 2),
+                    child: ListView.builder(
+                      padding: EdgeInsets.symmetric(vertical: 10.h),
+                      itemCount: dataArticles.length,
+                      itemBuilder: (context, index) {
+                        final article = dataArticles[index];
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/detailContentPage',
+                              arguments: article,
+                            );
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 10),
+                            height: MediaQuery.of(context).size.height * 0.25,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.15),
+                                  blurRadius: 2,
+                                  spreadRadius: 1,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    flex: 4,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            CircleAvatar(
+                                              radius: 12.sp,
+                                              backgroundImage:
+                                                  Image.network(
+                                                    article.fotoProfile!,
+                                                  ).image,
+                                            ),
+                                            SizedBox(width: 5.sp),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  article.username!,
+                                                  style: TextStyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontFamily: 'Montserrat',
+                                                  ),
+                                                ),
+                                                Text(
+                                                  article.email!,
+                                                  style: TextStyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontFamily: 'Montserrat',
+                                                    color: Color(0xFF828282),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        Text(
+                                          article.judul!,
+                                          style: TextStyle(
+                                            fontSize: 20.sp,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Montserrat',
+                                          ),
+                                          maxLines: 2,
+                                        ),
+                                        Text(
+                                          article.isiDeskripsi!,
+                                          style: TextStyle(
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'Montserrat',
+                                            color: Color(0xFF828282),
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 7,
+                                          textAlign: TextAlign.justify,
+                                        ),
+                                        Text(
+                                          timeAgo(
+                                            DateTime.parse(
+                                              article.timestamp!
+                                                  .toIso8601String(),
+                                            ),
+                                          ),
+                                          style: TextStyle(
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'Montserrat',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(width: 10.w),
+                                  Expanded(
+                                    flex: 3,
+                                    child: ClipRRect(
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(10),
+                                      ),
+                                      child: Image.network(
+                                        article.gambarVideo!,
+                                        height: double.infinity,
+                                        width: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      flex: 4,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              CircleAvatar(
-                                                radius: 12.sp,
-                                                backgroundImage:
-                                                    Image.network(
-                                                      article.fotoProfile!,
-                                                    ).image,
-                                              ),
-                                              SizedBox(width: 5.sp),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    article.username!,
-                                                    style: TextStyle(
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontFamily: 'Montserrat',
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    article.email!,
-                                                    style: TextStyle(
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontFamily: 'Montserrat',
-                                                      color: Color(0xFF828282),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          Text(
-                                            article.judul!,
-                                            style: TextStyle(
-                                              fontSize: 20.sp,
-                                              fontWeight: FontWeight.w700,
-                                              fontFamily: 'Montserrat',
-                                            ),
-                                            maxLines: 2,
-                                          ),
-                                          Text(
-                                            article.isiDeskripsi!,
-                                            style: TextStyle(
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'Montserrat',
-                                              color: Color(0xFF828282),
-                                            ),
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 7,
-                                            textAlign: TextAlign.justify,
-                                          ),
-                                          Text(
-                                            timeAgo(
-                                              DateTime.parse(
-                                                article.timestamp!
-                                                    .toIso8601String(),
-                                              ),
-                                            ),
-                                            style: TextStyle(
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: 'Montserrat',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(width: 10.w),
-                                    Expanded(
-                                      flex: 3,
-                                      child: ClipRRect(
-                                        borderRadius: const BorderRadius.all(
-                                          Radius.circular(10),
-                                        ),
-                                        child: Image.network(
-                                          article.gambarVideo!,
-                                          height: double.infinity,
-                                          width: double.infinity,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                   Column(
