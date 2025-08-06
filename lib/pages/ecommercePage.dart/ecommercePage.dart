@@ -251,9 +251,9 @@ class EcommerceView extends StatelessWidget {
                   ),
                 ),
                 const CategoriesSection(),
-                const Expanded(
-                  child: ProductsSection(),
-                ),
+                // const Expanded(
+                //   child: ProductsSection(),
+                // ),
               ],
             ),
           ),

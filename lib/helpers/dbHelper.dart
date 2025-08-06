@@ -33,11 +33,13 @@ class DbHelper {
   }
 
   Future<void> _onCreate(Database db, int version) async {
-    await db.execute('''CREATE TABLE percakapan(
-    id_percakapan INTEGER PRIMARY KEY AUTOINCREMENT,
-    sender_type TEXT NOT NULL CHECK (sender_type IN ('user', 'bot')),
-    pesan TEXT NOT NULL,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    )''');
+    await db.execute('''
+      CREATE TABLE percakapan(
+        id_percakapan INTEGER PRIMARY KEY AUTOINCREMENT,
+        sender_type TEXT NOT NULL CHECK (sender_type IN ('user', 'bot')),
+        pesan TEXT NOT NULL,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+      )
+    ''');
   }
 }

@@ -1,5 +1,54 @@
 import 'package:flutter/material.dart';
 
+class YesNoDialog extends StatelessWidget {
+  final String title;
+  final String content;
+  final VoidCallback onYes;
+  final VoidCallback onNo;
+
+  const YesNoDialog({
+    super.key,
+    required this.title,
+    required this.content,
+    required this.onYes,
+    required this.onNo,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(title),
+      content: Text(content),
+      actions: [
+        TextButton(onPressed: onYes, child: const Text('Yes')),
+        TextButton(onPressed: onNo, child: const Text('No')),
+      ],
+    );
+  }
+}
+
+class YesDialog extends StatelessWidget {
+  final String title;
+  final String content;
+  final VoidCallback onYes;
+
+  const YesDialog({
+    super.key,
+    required this.title,
+    required this.content,
+    required this.onYes,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(title),
+      content: Text(content),
+      actions: [TextButton(onPressed: onYes, child: const Text('Ok'))],
+    );
+  }
+}
+
 class YesNoBottomDialog {
   // Method statis untuk menampilkan dialog
   static Future<void> show(
