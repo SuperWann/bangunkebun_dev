@@ -40,11 +40,11 @@ class CategoriesSection extends StatelessWidget {
                     final isSelected = provider.selectedCategoryIndex == index;
                     return SizedBox(
                       height: 90,
-                      child: CategoryItem(
-                        category: category,
-                        isSelected: isSelected,
-                        onTap: () => provider.selectCategory(index),
-                      ),
+                      // child: CategoryItem(
+                      //   category: category,
+                      //   isSelected: isSelected,
+                      //   // onTap: () => provider.selectCategory(index),
+                      // ),
                     );
                   },
                 ),

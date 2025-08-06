@@ -1,5 +1,9 @@
 import 'package:bangunkebun_dev/config.dart';
+import 'package:bangunkebun_dev/pages/communityPage/listCommunityPage.dart';
+import 'package:bangunkebun_dev/pages/contentPage/listContentPage.dart';
 import 'package:bangunkebun_dev/pages/ecommercePage.dart/ecommercePage.dart';
+import 'package:bangunkebun_dev/pages/homePage/homePage%20copy.dart';
+import 'package:bangunkebun_dev/pages/profilePage/profilePage.dart';
 import 'package:bangunkebun_dev/widgets/roundedNavbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,14 +21,14 @@ class Navbar extends StatefulWidget {
 
 class _NavbarState extends State<Navbar> {
   int _currentIndex = 0;
-  int index = 0; 
+  int index = 0;
 
   Future<bool> _onWillPop() async {
     if (_currentIndex != 0) {
       setState(() {
-        _currentIndex = 0; 
+        _currentIndex = 0;
       });
-      return false; 
+      return false;
     } else {
       if (index == 0) {
         Fluttertoast.showToast(
@@ -35,12 +39,11 @@ class _NavbarState extends State<Navbar> {
           backgroundColor: const Color(0xFF828282).withOpacity(0.8),
           textColor: Colors.white,
           fontSize: 16.0,
-
         );
         index++;
 
         Future.delayed(const Duration(seconds: 5), () {
-          if (mounted) { 
+          if (mounted) {
             setState(() {
               index = 0;
             });
@@ -55,9 +58,12 @@ class _NavbarState extends State<Navbar> {
     }
   }
 
-  final List<Widget> _pages = [ 
-    const EcommercePage(),
-
+  final List<Widget> _pages = [
+    HomePage(),
+    EcommercePage(),
+    ListContentPage(),
+    ListCommunityPage(),
+    ProfilePage(),
   ];
 
   @override
@@ -81,12 +87,12 @@ class _NavbarState extends State<Navbar> {
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.white, 
-        statusBarIconBrightness: Brightness.dark, 
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.light,
         systemStatusBarContrastEnforced: false,
       ),
-      child: PopScope( 
+      child: PopScope(
         canPop: false,
         onPopInvoked: (didPop) async {
           if (!didPop) {
@@ -109,7 +115,7 @@ class _NavbarState extends State<Navbar> {
                   });
                 },
                 items: NavBarConfig.mainNavItems,
-                activeColor: const Color(0xFF007B29), 
+                activeColor: const Color(0xFF007B29),
                 backgroundColor: Colors.white,
                 bottomMargin: 30.h,
               ),
