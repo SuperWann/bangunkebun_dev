@@ -57,10 +57,10 @@ class ProductsSection extends StatelessWidget {
                 child: Consumer<EcommerceProvider>(
                   builder: (context, provider, child) {
                     return GridView.builder(
-                      shrinkWrap: true, // Membuat GridView mengambil ruang yang dibutuhkan
-                      physics: const NeverScrollableScrollPhysics(), // Menonaktifkan scroll internal
+                      shrinkWrap: true, 
+                      physics: const NeverScrollableScrollPhysics(), 
                       padding: EdgeInsets.only(
-                        bottom: 100.h, // Padding tambahan untuk mencegah tertutup navbar, disesuaikan lebih besar
+                        bottom: 100.h, 
                       ),
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
