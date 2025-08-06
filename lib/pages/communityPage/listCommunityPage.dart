@@ -19,11 +19,163 @@ class _ListCommunityPageState extends State<ListCommunityPage> {
         padding: EdgeInsets.only(left: 20, right: 20),
         child: Stack(
           children: [
-            Container(
+            SizedBox(
               height: double.infinity,
               width: double.infinity,
-              color: Colors.blue,
-              child: Column(),
+              child: Column(
+                children: [
+                  ListTile(
+                    tileColor: const Color.fromARGB(255, 235, 235, 235),
+                    leading: CircleAvatar(),
+                    title: Text(
+                      'Pandawara Group',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'halo semuanyaaa!!!',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    trailing: Text(
+                      '19.30',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    tileColor: const Color.fromARGB(255, 235, 235, 235),
+                    leading: CircleAvatar(),
+                    title: Text(
+                      'Pandawara Group',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'halo semuanyaaa!!!',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    trailing: Text(
+                      '19.30',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    tileColor: const Color.fromARGB(255, 235, 235, 235),
+                    leading: CircleAvatar(),
+                    title: Text(
+                      'Pandawara Group',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'halo semuanyaaa!!!',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    trailing: Text(
+                      '19.30',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    tileColor: const Color.fromARGB(255, 235, 235, 235),
+                    leading: CircleAvatar(),
+                    title: Text(
+                      'Pandawara Group',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'halo semuanyaaa!!!',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    trailing: Text(
+                      '19.30',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    tileColor: const Color.fromARGB(255, 235, 235, 235),
+                    leading: CircleAvatar(),
+                    title: Text(
+                      'Pandawara Group',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'halo semuanyaaa!!!',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    trailing: Text(
+                      '19.30',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    tileColor: const Color.fromARGB(255, 235, 235, 235),
+                    leading: CircleAvatar(),
+                    title: Text(
+                      'Pandawara Group',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'halo semuanyaaa!!!',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    trailing: Text(
+                      '19.30',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Positioned(
               bottom: MediaQuery.of(context).size.height * 0.16,
@@ -33,7 +185,7 @@ class _ListCommunityPageState extends State<ListCommunityPage> {
                   side: BorderSide(color: Colors.transparent),
                 ),
                 elevation: 2,
-                heroTag: 'addarticlebutton',
+                heroTag: 'addCommunitybutton',
                 backgroundColor: Color(0xFFF7AB0A),
                 onPressed: () {
                   Navigator.pushNamed(context, '/addCommunityPage');

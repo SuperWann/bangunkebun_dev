@@ -1,7 +1,6 @@
 import 'package:bangunkebun_dev/models/ecommerce.dart';
 import 'package:flutter/material.dart';
 
-
 class OrderSummaryPage extends StatefulWidget {
   final Product product;
   final int quantity;
@@ -19,19 +18,37 @@ class OrderSummaryPage extends StatefulWidget {
 }
 
 class _OrderSummaryPageState extends State<OrderSummaryPage> {
-  String? _selectedPayment; // Mengubah menjadi nullable untuk tidak ada yang dipilih default
+  String?
+  _selectedPayment; // Mengubah menjadi nullable untuk tidak ada yang dipilih default
   String _selectedShipping = 'Standard (3-5 hari)';
-  
+
   final Map<String, int> _shippingCosts = {
     'Standard (3-5 hari)': 10000,
     'Express (1-2 hari)': 15000,
   };
 
-  final List<String> _shippingOptions = ['Standard (3-5 hari)', 'Express (1-2 hari)'];
+  final List<String> _shippingOptions = [
+    'Standard (3-5 hari)',
+    'Express (1-2 hari)',
+  ];
   final List<Map<String, dynamic>> _paymentOptions = [
-    {'name': 'Cash On Delivery (COD)', 'icon': Icons.local_shipping, 'color': Colors.green},
-    {'name': 'Dana', 'icon': Icons.account_balance_wallet, 'color': Colors.blue, 'number': '082232896648'},
-    {'name': 'Mandiri', 'icon': Icons.account_balance, 'color': Colors.orange, 'number': '8898918319732'},
+    {
+      'name': 'Cash On Delivery (COD)',
+      'icon': Icons.local_shipping,
+      'color': Colors.green,
+    },
+    {
+      'name': 'Dana',
+      'icon': Icons.account_balance_wallet,
+      'color': Colors.blue,
+      'number': '082232896648',
+    },
+    {
+      'name': 'Mandiri',
+      'icon': Icons.account_balance,
+      'color': Colors.orange,
+      'number': '8898918319732',
+    },
   ];
 
   int get _currentShippingCost => _shippingCosts[_selectedShipping] ?? 0;
@@ -40,7 +57,8 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
   @override
   void initState() {
     super.initState();
-    _selectedPayment = null; // Memastikan tidak ada yang dipilih saat halaman dimuat
+    _selectedPayment =
+        null; // Memastikan tidak ada yang dipilih saat halaman dimuat
   }
 
   @override
@@ -128,7 +146,11 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.edit, color: Color(0xFF007B29), size: 20),
+                        icon: const Icon(
+                          Icons.edit,
+                          color: Color(0xFF007B29),
+                          size: 20,
+                        ),
                         onPressed: () {},
                       ),
                     ],
@@ -136,9 +158,9 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 16),
-            
+
             // Detail Pesanan Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -173,7 +195,10 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                             errorBuilder: (context, error, stackTrace) {
                               return Container(
                                 color: Colors.grey[200],
-                                child: const Icon(Icons.image, color: Colors.grey),
+                                child: const Icon(
+                                  Icons.image,
+                                  color: Colors.grey,
+                                ),
                               );
                             },
                           ),
@@ -220,9 +245,9 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 24),
-            
+
             // Metode Pembayaran Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -247,7 +272,10 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                         color: Colors.grey[50],
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: isSelected ? const Color(0xFF007B29) : Colors.grey[300]!,
+                          color:
+                              isSelected
+                                  ? const Color(0xFF007B29)
+                                  : Colors.grey[300]!,
                           width: isSelected ? 2 : 1,
                         ),
                       ),
@@ -309,9 +337,9 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 24),
-            
+
             // Pilihan Pengiriman
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -330,14 +358,20 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                   const SizedBox(height: 12),
                   Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       border: Border.all(color: const Color(0xFF007B29)),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: DropdownButton<String>(
                       value: _selectedShipping,
-                      icon: const Icon(Icons.arrow_drop_down, color: Color(0xFF007B29)),
+                      icon: const Icon(
+                        Icons.arrow_drop_down,
+                        color: Color(0xFF007B29),
+                      ),
                       iconSize: 24,
                       elevation: 16,
                       style: const TextStyle(
@@ -352,20 +386,23 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                           _selectedShipping = newValue!;
                         });
                       },
-                      items: _shippingOptions.map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
+                      items:
+                          _shippingOptions.map<DropdownMenuItem<String>>((
+                            String value,
+                          ) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
                     ),
                   ),
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 24),
-            
+
             // Rincian Pembayaran Section
             Container(
               width: double.infinity,
@@ -456,9 +493,9 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 16),
-            
+
             // Buat Pesanan Button
             Padding(
               padding: const EdgeInsets.all(16),
@@ -473,32 +510,35 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                     ),
                     elevation: 0,
                   ),
-                  onPressed: (_selectedPayment != null)
-                      ? () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Pesanan berhasil dibuat! Total: Rp. $_totalPayment',
-                                style: const TextStyle(fontFamily: 'Montserrat'),
+                  onPressed:
+                      (_selectedPayment != null)
+                          ? () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Pesanan berhasil dibuat! Total: Rp. $_totalPayment',
+                                  style: const TextStyle(
+                                    fontFamily: 'Montserrat',
+                                  ),
+                                ),
+                                backgroundColor: const Color(0xFF007B29),
                               ),
-                              backgroundColor: const Color(0xFF007B29),
-                            ),
-                          );
-                          // Navigasi ke PaymentPage
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PaymentPage(
-                                product: widget.product,
-                                quantity: widget.quantity,
-                                totalPrice: _totalPayment,
-                                selectedShipping: _selectedShipping,
-                                selectedPayment: _selectedPayment,
-                              ),
-                            ),
-                          );
-                        }
-                      : null,
+                            );
+                            // Navigasi ke PaymentPage
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => PaymentPage(
+                            //       product: widget.product,
+                            //       quantity: widget.quantity,
+                            //       totalPrice: _totalPayment,
+                            //       selectedShipping: _selectedShipping,
+                            //       selectedPayment: _selectedPayment,
+                            //     ),
+                            //   ),
+                            // );
+                          }
+                          : null,
                   child: const Text(
                     'Buat Pesanan',
                     style: TextStyle(
