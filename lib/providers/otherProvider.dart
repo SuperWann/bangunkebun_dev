@@ -12,6 +12,14 @@ class OtherProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<dynamic>? _dataJenisProduk;
+  List<dynamic>? get dataJenisProduk => _dataJenisProduk;
+
+  Future<void> getJenisProduk() async {
+    _dataJenisKonten = await _otherService.getDataJenisProduk();
+    notifyListeners();
+  }
+
   List<dynamic>? _dataProvinsi;
   List<dynamic>? get dataProvinsi => _dataProvinsi;
 
@@ -24,7 +32,9 @@ class OtherProvider extends ChangeNotifier {
   List<dynamic>? get dataKabupatenByProvinsi => _dataKabupatenByProvinsi;
 
   Future<void> getKabupatenByProvinsi(int idProvinsi) async {
-    _dataKabupatenByProvinsi = await _otherService.getDataKabupatenByProvinsi(idProvinsi);
+    _dataKabupatenByProvinsi = await _otherService.getDataKabupatenByProvinsi(
+      idProvinsi,
+    );
     notifyListeners();
   }
 
@@ -32,7 +42,9 @@ class OtherProvider extends ChangeNotifier {
   List<dynamic>? get dataKecamatanByKabupaten => _dataKecamatanByKabupaten;
 
   Future<void> getKecamatanByKabupaten(int idKabupaten) async {
-    _dataKecamatanByKabupaten = await _otherService.getDataKecamatanByKabupaten(idKabupaten);
+    _dataKecamatanByKabupaten = await _otherService.getDataKecamatanByKabupaten(
+      idKabupaten,
+    );
     notifyListeners();
   }
 }
