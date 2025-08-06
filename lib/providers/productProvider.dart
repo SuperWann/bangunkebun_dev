@@ -19,4 +19,22 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  int _selectedCategoryIndex = 0; 
+  String _searchQuery = '';
+  
+  int get selectedCategoryIndex => _selectedCategoryIndex;
+  String get searchQuery => _searchQuery;
+  
+  void selectCategory(int index) {
+    _selectedCategoryIndex = index;
+    notifyListeners();
+  }
+
+  void setSearchQuery(String query) {
+    _searchQuery = query;
+    notifyListeners();
+  }
+
+
+
 }

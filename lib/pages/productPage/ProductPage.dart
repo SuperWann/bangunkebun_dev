@@ -1,3 +1,4 @@
+import 'package:bangunkebun_dev/models/product.dart';
 import 'package:bangunkebun_dev/providers/productProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,7 +12,7 @@ class ProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => ProductProvider()..fetchProducts(),
+      create: (context) => ProductProvider()..getDataProduct(),
       child: const ProductView(),
     );
   }
@@ -177,7 +178,7 @@ class ProductView extends StatelessWidget {
                                               title: 'Harga Terendah',
                                               subtitle: 'Urutkan dari harga terendah ke tertinggi',
                                               onTap: () {
-                                                provider.sortProducts('price_low');
+                                                // provider.sortProducts('price_low');
                                                 Navigator.pop(context);
                                               },
                                             ),
@@ -191,7 +192,7 @@ class ProductView extends StatelessWidget {
                                               title: 'Harga Tertinggi',
                                               subtitle: 'Urutkan dari harga tertinggi ke terendah',
                                               onTap: () {
-                                                provider.sortProducts('price_high');
+                                                // provider.sortProducts('price_high');
                                                 Navigator.pop(context);
                                               },
                                             ),
@@ -205,7 +206,7 @@ class ProductView extends StatelessWidget {
                                               title: 'Nama A-Z',
                                               subtitle: 'Urutkan nama dari A sampai Z',
                                               onTap: () {
-                                                provider.sortProducts('name_az');
+                                                // provider.sortProducts('name_az');
                                                 Navigator.pop(context);
                                               },
                                             ),
@@ -220,7 +221,7 @@ class ProductView extends StatelessWidget {
                                               subtitle: 'Urutkan nama dari Z sampai A',
                                               iconTransform: Matrix4.rotationY(3.14159),
                                               onTap: () {
-                                                provider.sortProducts('name_za');
+                                                // provider.sortProducts('name_za');
                                                 Navigator.pop(context);
                                               },
                                             ),
@@ -272,39 +273,39 @@ class ProductView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    color: const Color(0xFFFAFAFA),
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 20),
-                        Consumer<ProductProvider>(
-                          builder: (context, provider, child) {
-                            if (provider.filteredProducts.isEmpty) {
-                              return const Center(child: CircularProgressIndicator());
-                            }
-                            return GridView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              padding: EdgeInsets.only(bottom: 100.h),
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 0.78,
-                                crossAxisSpacing: 12,
-                                mainAxisSpacing: 16,
-                              ),
-                              itemCount: provider.filteredProducts.length,
-                              itemBuilder: (context, index) {
-                                final product = provider.filteredProducts[index];
-                                return ProductCard(product: product);
-                              },
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Container(
+                  //   color: const Color(0xFFFAFAFA),
+                  //   padding: const EdgeInsets.all(16),
+                  //   child: Column(
+                  //     crossAxisAlignment: CrossAxisAlignment.start,
+                  //     children: [
+                  //       const SizedBox(height: 20),
+                  //       Consumer<ProductProvider>(
+                  //         builder: (context, provider, child) {
+                  //           if (provider.filteredProducts.isEmpty) {
+                  //             return const Center(child: CircularProgressIndicator());
+                  //           }
+                  //           return GridView.builder(
+                  //             shrinkWrap: true,
+                  //             physics: const NeverScrollableScrollPhysics(),
+                  //             padding: EdgeInsets.only(bottom: 100.h),
+                  //             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  //               crossAxisCount: 2,
+                  //               childAspectRatio: 0.78,
+                  //               crossAxisSpacing: 12,
+                  //               mainAxisSpacing: 16,
+                  //             ),
+                  //             itemCount: provider.filteredProducts.length,
+                  //             itemBuilder: (context, index) {
+                  //               final product = provider.filteredProducts[index];
+                  //               return ProductCard(product: product);
+                  //             },
+                  //           );
+                  //         },
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -314,7 +315,7 @@ class ProductView extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const AddProductPage(),
+                  builder: (context) => const ProductPage(),
                 ),
               );
             },
@@ -415,12 +416,12 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ManageProductDetailPage(product: product),
-          ),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => ManageProductDetailPage(product: product),
+        //   ),
+        // );
       },
       child: Container(
         decoration: BoxDecoration(
@@ -452,7 +453,7 @@ class ProductCard extends StatelessWidget {
                   children: [
                     Positioned.fill(
                       child: Image.network(
-                        product.imageAsset,
+                        product.gambarProduk!,
                         fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
                       ),
@@ -473,7 +474,7 @@ class ProductCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          product.name.length > 18 ? '${product.name.substring(0, 18)}...' : product.name,
+                          product.namaProduk!.length > 18 ? '${product.namaProduk?.substring(0, 18)}...' : product.namaProduk!,
                           style: const TextStyle(
                             fontFamily: 'Montserrat',
                             fontSize: 13,
@@ -486,7 +487,7 @@ class ProductCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          'Stok: ${product.stock}',
+                          'Stok: ${product.stok}',
                           style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontSize: 10,
@@ -499,7 +500,7 @@ class ProductCard extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      'Rp ${product.price}',
+                      'Rp ${product.harga}',
                       style: const TextStyle(
                         fontFamily: 'Montserrat',
                         fontSize: 14,

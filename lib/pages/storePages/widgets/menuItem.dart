@@ -1,3 +1,4 @@
+import 'package:bangunkebun_dev/pages/productPage/ProductPage.dart';
 import 'package:bangunkebun_dev/pages/storePages/widgets/menuItemcard.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +16,10 @@ class MenuItemsWidget extends StatelessWidget {
           iconColor: const Color(0xFF2E7D32),
           onTap: () {
             print('Navigate to ProductPage');
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => const ProductPage()),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ProductPage()),
+            );
           },
         ),
         const SizedBox(height: 12),

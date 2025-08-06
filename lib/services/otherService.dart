@@ -20,6 +20,18 @@ class OtherService {
     }
   }
 
+    Future<List<dynamic>> getDataJenisProduk() async {
+    final response = await http.get(Uri.parse('$_baseUrl/dataJenisProduk'));
+
+    if (response.statusCode == 200) {
+      final jsonData = json.decode(response.body);
+      return jsonData;
+    } else {
+      return [];
+    }
+  }
+
+
   Future<List<dynamic>> getDataProvinsi() async {
     final response = await http.get(Uri.parse('$_baseUrl/dataProvinsi'));
 
